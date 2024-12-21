@@ -5,18 +5,11 @@ services:
       context: .
       dockerfile: ./docker/php/Dockerfile
     container_name: app_laravel
+    ports:
+      - "8000:8000"
+      - "2019:2019"
     volumes:
-      - .:/var/www
-      - ~/.aws:/var/www/.aws
+      - ./laravel-project:/app/
+      - ~/.aws:/root/.aws
     environment:
       - AWS_PROFILE=admin
-  nginx:
-    build:
-      context: .
-      dockerfile: ./docker/nginx/Dockerfile
-    container_name: nginx_laravel
-    ports:
-      - 8000:80
-    working_dir: /var/www
-    depends_on:
-      - app
