@@ -15,6 +15,7 @@ class S3Controller
             // ※オプション（ファイルダウンロード、削除時に使用するS3でのファイル保存名、アップロード先のパスを取得します。）
             // アップロードファイルurlを取得
             $path = $upload_file->storeAs('images', $upload_file->getClientOriginalName(), 's3');
+            \Log::info('Uploaded file path: ' . $path);
             return view("upload");
         }
     }

@@ -7,6 +7,9 @@ services:
     container_name: app_laravel
     volumes:
       - .:/var/www
+      - ~/.aws:/var/www/.aws
+    environment:
+      - AWS_PROFILE=admin
   nginx:
     build:
       context: .
